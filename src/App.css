@@ -1,0 +1,276 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+header {
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
+}
+
+.todo-list-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 20px auto;
+    /* border: 1px solid #ddd; */
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.todo-list-wrap {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    min-height: 60vh;
+    max-height: 600px; /* 고정 or 최대 높이 설정 */
+    overflow-y: auto; /* 세로 스크롤만 */
+    overflow-x: hidden; /* 가로 스크롤은 숨김 */
+}
+
+.todo-list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+    flex-shrink: 0; /* 높이 유지하게 만듦 */
+    padding: 5px 7px;
+    border-bottom: 1px solid #ddd;
+    transition: box-shadow 0.2s;
+}
+
+.todo-list-row .todo-list-item {
+    display: flex;
+    gap: 20px;
+}
+
+.todo-list-row:hover {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.todo-list-row .todo-list-item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+}
+
+.todo-list-row .todo-list-item:first-child {
+    flex: 1;
+}
+
+.todo-list-row .todo-list-item .todo-checkbox {
+    width: 22px;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.todo-list-row .todo-list-item .todo-list-content {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 1.2rem;
+}
+
+input:focus,
+button:focus,
+textarea:focus {
+    outline: none;
+}
+
+.todo-list-row .todo-list-item button {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 600;
+    height: auto;
+    min-height: 36px;
+}
+
+.todo-list-row .todo-list-item .modify-btn {
+    background-color: #e5e7eb;
+    color: #333;
+}
+
+.todo-list-row .todo-list-item .modify-btn:hover {
+    background-color: #d1d5db;
+}
+
+.todo-list-row .todo-list-item .delete-btn {
+    background-color: #e77683;
+}
+
+.todo-list-row .todo-list-item .delete-btn:hover {
+    background-color: #d25765;
+}
+
+.todo-add-wrap {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #ddd;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+
+.todo-add-wrap input {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 90%;
+    height: 100%;
+}
+
+.todo-add-wrap .add-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 600;
+    height: 100%;
+}
+
+/* 모달창 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-body h3 {
+    font-size: 1.3rem;
+}
+
+.modal-body textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.modal-body .modal-btn-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    height: 45px;
+}
+
+.modal-body .modal-btn-wrap button {
+    padding: 6px 12px;
+    font-size: 1rem;
+    background-color: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 600;
+    height: 100%;
+    width: 100px;
+}
+
+.modal-body .modal-btn-wrap button.save-btn:hover {
+    background-color: #2563eb;
+}
+
+.modal-body .modal-btn-wrap button.cancel-btn {
+    background-color: #e5e7eb;
+    color: #333;
+}
+
+.modal-body .modal-btn-wrap button.cancel-btn:hover {
+    background-color: #d1d5db;
+}
+
+
+.clock-wrap {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 20px 0;
+    font-weight: 700;
+}
+
+.advice-btn-wrap {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+}
+
+.advice-btn-wrap .advice-toggle-btn {
+    width: 150px;
+    background-color: #3b82f6;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.advice-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.advice-wrap .advice-author {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.advice-wrap .advice-message {
+    font-size: 1.1rem;
+}
+
+.todo-empty-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 450px;
+}
+
+.todo-empty-message {
+    font-size: 2rem;
+    color: #888;
+}
