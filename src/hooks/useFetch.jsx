@@ -12,7 +12,7 @@ function useFetch(url) {
         setIsLoading(true);
         fetch(url)
             .then((res) => {
-                if (!res.ok) throw new Error("네트워크 오류");
+                if (!res.ok) throw new Error("서버 응답 실패");
                 return res.json();
             })
             .then((result) => setData(result))

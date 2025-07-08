@@ -5,7 +5,7 @@ function TodoListRows({ todo, postData, putData, deleteData }) {
     const [todos, setTodos] = useState(todo || []); // todo 데이터를 로컬 상태로 복사해서 사용
     const [draggingIndex, setDraggingIndex] = useState(null); // 현재 드래그 중인 아이템의 인덱스를 저장
 
-    // todo prop이 변경될 때마다 내부 상태(todos)도 업데이트
+    // todo prop이 변경될 때마다 내부 상태(todos)도 같이 업데이트
     useEffect(() => {
         setTodos(todo || []);
     }, [todo]);
@@ -39,7 +39,7 @@ function TodoListRows({ todo, postData, putData, deleteData }) {
             order: index, // 순서대로 부여
         }));
 
-        setTodos(updated); // 상태 업데이트 (선택)
+        setTodos(updated); // 상태 업데이트
 
         // 서버에도 각 아이템의 order 업데이트
         updated.forEach((item) => {

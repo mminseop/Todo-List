@@ -26,3 +26,5 @@ json-server --watch ./src/assets/data/db.json --port 3000
 - Custom Hook (useFetch) 활용
 - useState, useEffect, useRef 사용
 - 모달 UI, 애니메이션, 조건부 렌더링 등 다양한 React 패턴 학습
+- 체크박스 기반 할일 완료 처리 및 완료된 항목 스타일링
+- 드래그 앤 드롭 기능을 이용한 투두 리스트 순서 변경
