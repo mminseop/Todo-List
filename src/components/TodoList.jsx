@@ -34,18 +34,27 @@ function TodoList({ list, putData, deleteData }) {
         setEditContent(list.content); // 원래 내용으로 복구
     };
 
+    const handleToggleComplete = () => {
+        putData(list.id, { ...list, isComplete: !list.isComplete });
+    };
+
     return (
         <>
-            <div className={"todo-list-row"}>
+            <div className={`todo-list-row ${list.isComplete ? "completed" : ""}`}>
                 <div className="todo-list-item">
-                    <input className="todo-checkbox" type="checkbox" />
+                    <input
+                        className="todo-checkbox"
+                        type="checkbox"
+                        checked={list.isComplete}
+                        onChange={handleToggleComplete}
+                    />
                     <div className="todo-list-content">{list.content}</div>
                 </div>
                 <div className="todo-list-item">
-                    <button className="modify-btn" onClick={handleModify}>
+                    <button className="modify-btn" onClick={handleModify} disabled={list.isComplete}>
                         수정
                     </button>
-                    <button className="delete-btn" onClick={handleDel}>
+                    <button className="delete-btn" onClick={handleDel} disabled={list.isComplete}>
                         삭제
                     </button>
                 </div>

@@ -67,12 +67,14 @@ header {
 
 .todo-list-row .todo-list-item:first-child {
     flex: 1;
+    padding-left: 10px;
 }
 
 .todo-list-row .todo-list-item .todo-checkbox {
     width: 22px;
     height: 100%;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .todo-list-row .todo-list-item .todo-list-content {
@@ -221,7 +223,6 @@ textarea:focus {
     background-color: #d1d5db;
 }
 
-
 .clock-wrap {
     display: flex;
     justify-content: center;
@@ -273,4 +274,23 @@ textarea:focus {
 .todo-empty-message {
     font-size: 2rem;
     color: #888;
+}
+
+.todo-list-row:active {
+    opacity: 0.6;
+    cursor: grabbing;
+}
+
+.todo-list-row.completed {
+    background-color: #e0e0e0;
+    opacity: 0.8;
+}
+
+.todo-list-row.completed .todo-list-content {
+    color: #888;
+}
+
+/* 버튼 비활성화 스타일 */
+button:disabled {
+    cursor: not-allowed !important;
 }

@@ -13,7 +13,7 @@ function App() {
         postData,
         putData,
         deleteData,
-    } = useFetch("http://localhost:3000/todos");
+    } = useFetch("http://localhost:3000/todos?_sort=order");
 
     return (
         <>

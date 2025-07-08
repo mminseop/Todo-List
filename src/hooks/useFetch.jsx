@@ -6,7 +6,7 @@ function useFetch(url) {
     const [error, setError] = useState(null);
 
     // GET 요청
-    const fetchData =(() => {
+    const fetchData = () => {
         if (!url) return;
 
         setIsLoading(true);
@@ -18,7 +18,7 @@ function useFetch(url) {
             .then((result) => setData(result))
             .catch((err) => setError(err.message))
             .finally(() => setIsLoading(false));
-    });
+    };
 
     useEffect(() => {
         fetchData();
@@ -47,7 +47,8 @@ function useFetch(url) {
     const putData = async (id, updatedData) => {
         try {
             setIsLoading(true);
-            const res = await fetch(`${url}/${id}`, {
+            const baseUrl = url.split("?")[0]; // query 제거
+            const res = await fetch(`${baseUrl}/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedData),
@@ -66,7 +67,8 @@ function useFetch(url) {
     const deleteData = async (id) => {
         try {
             setIsLoading(true);
-            await fetch(`${url}/${id}`, { method: "DELETE" });
+            const baseUrl = url.split("?")[0]; // query 제거
+            await fetch(`${baseUrl}/${id}`, { method: "DELETE" });
             fetchData(); // 자동 새로고침
         } catch (err) {
             setError(err.message);

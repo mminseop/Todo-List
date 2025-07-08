@@ -14,6 +14,7 @@ function TodoListAdd({ todo, postData }) {
             id: String(Date.now()),
             content: content,
             isComplete: false,
+            order: todo.length,
         };
 
         postData(newTodo); // 서버에 add 요청

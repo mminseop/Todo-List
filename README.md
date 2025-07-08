@@ -1,11 +1,11 @@
-# 📝 React Todo List Mini Project
+# Todo List Mini Project
 
 간단한 할일 목록(Todo List) 애플리케이션입니다.  
 Vite + React + JSON Server를 사용하여 CRUD, 시간 표시, 명언 가져오기 등의 기능을 구현했습니다.
 
 ---
 
-## 📦 설치 및 실행 방법
+## 설치 및 실행 방법
 
 ### 1. 개발 서버 실행
 ```bash
